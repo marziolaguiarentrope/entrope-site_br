@@ -1,597 +1,617 @@
 <!DOCTYPE html>
 <html lang="pt-BR" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Entrope - Automação e Times Dedicados para sua Operação</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg: #0b1324;
-            --card-bg: #111b2f;
-            --muted: #93a4bd;
-            --brand: #3b82f6;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Entrope — Automação e Times Dedicados para sua Operação</title>
 
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg);
-            color: #cbd5e1; /* slate-300 */
-        }
+  <!-- Canonical & SEO -->
+  <link rel="canonical" href="https://www.seudominio.com/">
+  <meta name="description" content="Automação e times dedicados para conectar ferramentas, reduzir trabalho manual e escalar operações. Atuamos como extensão do seu time.">
 
-        .brand-blue { color: var(--brand); }
-        .bg-brand-blue { background-color: #2563EB; }
+  <!-- Open Graph / Twitter -->
+  <meta property="og:title" content="Entrope — Automação e Times Dedicados">
+  <meta property="og:description" content="Construímos automações robustas e atuamos como extensão do seu time.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.seudominio.com/">
+  <meta property="og:image" content="https://www.seudominio.com/og-cover.jpg">
+  <meta name="twitter:card" content="summary_large_image">
 
-        .hero-gradient {
-            background:
-                radial-gradient(1000px 600px at 50% -10%, rgba(59,130,246,.18), transparent 60%),
-                radial-gradient(700px 400px at 75% 10%, rgba(14,165,233,.12), transparent 60%);
-        }
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.ico">
 
-        .cta-button {
-            transition: all 0.3s ease;
-        }
-        .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.2), 0 4px 6px -2px rgba(59, 130, 246, 0.1);
-        }
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
 
-        .loader {
-            border: 4px solid #334155;
-            border-top: 4px solid var(--brand);
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            animation: spin 1s linear infinite;
-        }
+  <!-- Fonts (swap) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" as="style" onload="this.rel='stylesheet'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"></noscript>
+  <style>
+    :root {
+      --bg: #0b1324;
+      --card-bg: #111b2f;
+      --muted: #93a4bd;
+      --brand: #3b82f6;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg);
+      color: #cbd5e1;
+    }
+    .brand-blue { color: var(--brand); }
+    .bg-brand-blue { background-color: #2563EB; }
 
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
+    .hero-gradient {
+      background:
+        radial-gradient(1000px 600px at 50% -10%, rgba(59,130,246,.18), transparent 60%),
+        radial-gradient(700px 400px at 75% 10%, rgba(14,165,233,.12), transparent 60%);
+    }
+    .cta-button { transition: all 0.3s ease; }
+    .cta-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.2), 0 4px 6px -2px rgba(59, 130, 246, 0.1);
+    }
+    .loader {
+      border: 4px solid #334155;
+      border-top: 4px solid var(--brand);
+      border-radius: 50%;
+      width: 40px; height: 40px;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin { from { transform: rotate(0) } to { transform: rotate(360deg) } }
 
-        .json-preview {
-            background-color: #020617;
-            color: #e2e8f0;
-            border: 1px solid #1e293b;
-            border-radius: 0.5rem;
-            padding: 1rem;
-            font-family: monospace;
-            white-space: pre-wrap;
-            text-align: left;
-        }
+    .json-preview {
+      background-color: #020617;
+      color: #e2e8f0;
+      border: 1px solid #1e293b;
+      border-radius: 0.5rem;
+      padding: 1rem;
+      font-family: monospace;
+      white-space: pre-wrap;
+      text-align: left;
+    }
 
-        .fade-in-section {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-        }
-        .fade-in-section.is-visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+    .fade-in-section { opacity: 0; transform: translateY(20px); transition: opacity .6s ease-out, transform .6s ease-out; }
+    .fade-in-section.is-visible { opacity: 1; transform: translateY(0); }
 
-        .dark-card {
-            background-color: #1e293b;
-            border: 1px solid #334155;
-        }
-        .dark-card-highlight {
-            border-color: var(--brand);
-            box-shadow: 0 0 15px rgba(59, 130, 246, 0.2);
-        }
+    .dark-card { background-color: #1e293b; border: 1px solid #334155; }
+    .dark-card-highlight { border-color: var(--brand); box-shadow: 0 0 15px rgba(59, 130, 246, 0.2); }
 
-        details[open] { background-color: #1e293b; }
-        details summary svg { transition: transform 0.2s ease-in-out; }
-        details[open] summary svg { transform: rotate(180deg); }
+    details[open] { background-color: #1e293b; }
+    details summary svg { transition: transform .2s ease-in-out; }
+    details[open] summary svg { transform: rotate(180deg); }
 
-        /* --- Glassmorphism Card Styles --- */
-        .card-glass {
-            position: relative;
-            border-radius: 20px;
-            background: linear-gradient(180deg, rgba(17,27,47,.75), rgba(17,27,47,.6));
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(148,163,184,.15);
-            overflow: hidden;
-        }
-        .card-glass::before { /* Animated gradient border */
-            content: "";
-            position: absolute;
-            inset: -1px;
-            border-radius: 21px; /* Should be slightly larger than card's border-radius */
-            padding: 1.5px; /* Border thickness */
-            background: conic-gradient(from 0deg, #2563eb 0%, #38bdf8 20%, transparent 25%, transparent 75%, #60a5fa 80%, #2563eb 100%);
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
-            animation: rotate 4s linear infinite;
-            z-index: -1;
-        }
-        .card-glow { /* Inner glow effect */
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(ellipse 50% 60% at 50% 0%, rgba(59, 130, 246, 0.15), transparent);
-            pointer-events: none;
-        }
+    /* Glassmorphism */
+    .card-glass {
+      position: relative; border-radius: 20px;
+      background: linear-gradient(180deg, rgba(17,27,47,.75), rgba(17,27,47,.6));
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(148,163,184,.15);
+      overflow: hidden;
+    }
+    .card-glass::before {
+      content: ""; position: absolute; inset: -1px; border-radius: 21px; padding: 1.5px;
+      background: conic-gradient(from 0deg, #2563eb 0%, #38bdf8 20%, transparent 25%, transparent 75%, #60a5fa 80%, #2563eb 100%);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor; mask-composite: exclude;
+      animation: rotate 4s linear infinite; z-index: -1;
+    }
+    .card-glow {
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 50% 60% at 50% 0%, rgba(59,130,246,.15), transparent);
+      pointer-events: none;
+    }
+    @keyframes rotate { from { transform: rotate(0deg) } to { transform: rotate(360deg) } }
 
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
+    /* Form fields */
+    .field { background: rgba(30,41,59,.5); border: 1px solid #334155; border-radius: 8px; transition: border-color .3s ease; }
+    .field:focus-within { border-color: var(--brand); }
+    .field input, .field select, .field textarea {
+      background: transparent; border: none; outline: none; color: #f1f5f9; width: 100%;
+    }
+    .field select { appearance: none; }
+    .field .icon-left { color: var(--muted); }
+    .btn-primary { background-color: var(--brand); color:#fff; font-weight:600; padding:.75rem 1.5rem; border-radius:8px; transition: all .3s; }
+    .btn-primary[disabled] { opacity:.7; cursor:not-allowed; }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 15px -3px rgba(59,130,246,.2), 0 4px 6px -2px rgba(59,130,246,.1); }
 
-        /* --- Glassmorphism Form Styles --- */
-        .field {
-            background: rgba(30, 41, 59, 0.5); /* slate-800 with alpha */
-            border: 1px solid #334155; /* slate-700 */
-            border-radius: 8px;
-            transition: border-color 0.3s ease;
-        }
-        .field:focus-within {
-            border-color: var(--brand);
-        }
-        .field input, .field select, .field textarea {
-            background: transparent;
-            border: none;
-            outline: none;
-            color: #f1f5f9; /* slate-100 */
-            width: 100%;
-        }
-        .field select {
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            appearance: none;
-        }
-        .field .icon-left {
-            color: var(--muted);
-        }
-        .btn-primary {
-            background-color: var(--brand);
-            color: white;
-            font-weight: 600;
-            padding: 0.75rem 1.5rem;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-        }
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.2), 0 4px 6px -2px rgba(59, 130, 246, 0.1);
-        }
+    /* Stagger */
+    .stagger .fade-up { opacity:0; transform: translateY(15px); animation: fade-up .5s ease-out forwards; animation-delay: calc(var(--d) * 100ms); }
+    @keyframes fade-up { to { opacity:1; transform: translateY(0) } }
 
-        /* --- Stagger Animation --- */
-        .stagger .fade-up {
-            opacity: 0;
-            transform: translateY(15px);
-            animation: fade-up 0.5s ease-out forwards;
-            animation-delay: calc(var(--d) * 100ms);
-        }
-        @keyframes fade-up {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-    </style>
+    /* A11y: foco visível */
+    :focus-visible { outline: 2px solid var(--brand); outline-offset: 3px; border-radius: 6px; }
+
+    /* Respeito ao usuário: menos movimento */
+    @media (prefers-reduced-motion: reduce) {
+      .fade-in-section, .stagger .fade-up, .card-glass::before { animation: none !important; transition: none !important; }
+    }
+
+    /* Header shrink */
+    .header { transition: padding .25s ease, background-color .25s ease, border-color .25s ease; }
+    .header.shrink { padding-top:.35rem !important; padding-bottom:.35rem !important; background-color: rgba(15,23,42,.9); border-color:#334155; }
+  </style>
+
+  <!-- JSON-LD Organização -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Organization",
+    "name":"Entrope",
+    "url":"https://www.seudominio.com/",
+    "logo":"https://www.seudominio.com/logo-empresa%20(1).png",
+    "sameAs":[ "https://www.linkedin.com/company/entrope" ]
+  }
+  </script>
 </head>
 <body class="text-slate-300">
 
-    <!-- Header -->
-    <header class="bg-slate-900/80 backdrop-blur-lg fixed top-0 left-0 right-0 z-50 border-b border-slate-700/75">
-        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-                  <a href="#" class="flex items-center">
-                      <img src="logo-empresa (1).png" alt="Logo Entrope" class="h-9 w-auto"/>
-                  </a>
-            <nav class="hidden md:flex items-center space-x-8">
-                <a href="#engagement-models" class="text-slate-300 hover:text-blue-500 transition">Como Atuamos</a>
-                <a href="#use-cases" class="text-slate-300 hover:text-blue-500 transition">Soluções</a>
-                <a href="#about-us" class="text-slate-300 hover:text-blue-500 transition">Sobre Nós</a>
-                <a href="#faq" class="text-slate-300 hover:text-blue-500 transition">Dúvidas</a>
-            </nav>
-            <a href="#contact" class="bg-brand-blue text-white font-semibold px-5 py-2.5 rounded-lg cta-button hidden md:inline-block">Fale com um Especialista</a>
-            <button id="mobile-menu-button" class="md:hidden p-2 rounded-md text-slate-300 hover:bg-slate-700">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
-            </button>
+  <!-- Header -->
+  <header class="header bg-slate-900/80 backdrop-blur-lg fixed top-0 left-0 right-0 z-50 border-b border-slate-700/75">
+    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+      <a href="#" class="flex items-center" aria-label="Página inicial Entrope">
+        <img src="logo-empresa (1).png" alt="Logo Entrope" width="150" height="40" class="h-9 w-auto" loading="eager" decoding="async">
+      </a>
+      <nav class="hidden md:flex items-center space-x-8">
+        <a href="#engagement-models" class="text-slate-300 hover:text-blue-500 transition">Como Atuamos</a>
+        <a href="#use-cases" class="text-slate-300 hover:text-blue-500 transition">Soluções</a>
+        <a href="#about-us" class="text-slate-300 hover:text-blue-500 transition">Sobre Nós</a>
+        <a href="#faq" class="text-slate-300 hover:text-blue-500 transition">Dúvidas</a>
+      </nav>
+      <a href="#contact" class="bg-brand-blue text-white font-semibold px-5 py-2.5 rounded-lg cta-button hidden md:inline-block">Fale com um Especialista</a>
+      <button id="mobile-menu-button" class="md:hidden p-2 rounded-md text-slate-300 hover:bg-slate-700" aria-label="Abrir menu">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden px-6 pb-4 border-t border-slate-700 bg-slate-900">
+      <a href="#engagement-models" class="block py-2 text-slate-300 hover:text-blue-500">Como Atuamos</a>
+      <a href="#use-cases" class="block py-2 text-slate-300 hover:text-blue-500">Soluções</a>
+      <a href="#about-us" class="block py-2 text-slate-300 hover:text-blue-500">Sobre Nós</a>
+      <a href="#faq" class="block py-2 text-slate-300 hover:text-blue-500">Dúvidas</a>
+      <a href="#contact" class="mt-4 block w-full text-center bg-brand-blue text-white font-semibold px-5 py-2.5 rounded-lg cta-button">Fale com um Especialista</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="pt-32 pb-20 md:pt-48 md:pb-28 relative overflow-hidden">
+      <div class="hero-gradient absolute inset-0"></div>
+      <div class="container mx-auto px-6 text-center relative z-10 fade-in-section">
+        <h1 class="text-4xl md:text-6xl font-extrabold text-slate-50 leading-tight mb-4">
+          Ampliamos sua equipe com <span class="brand-blue">especialistas em automação.</span>
+        </h1>
+        <p class="max-w-3xl mx-auto text-lg md:text-xl text-slate-300 mb-8">
+          Conectamos suas ferramentas e otimizamos processos com automações robustas no WhatsApp, atuando como uma extensão do seu time. Reduza o trabalho manual e ganhe eficiência, seja em projetos pontuais ou em parcerias de longo prazo.
+        </p>
+        <a href="#contact" class="bg-brand-blue text-white font-bold px-8 py-4 rounded-lg text-lg cta-button inline-block">
+          Agende uma conversa
+        </a>
+      </div>
+    </section>
+
+    <!-- Engagement Models -->
+    <section id="engagement-models" class="py-20 bg-slate-800/50">
+      <div class="container mx-auto px-6 fade-in-section">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold text-white">Como podemos atuar na sua empresa</h2>
+          <p class="text-lg text-slate-400 mt-2 max-w-2xl mx-auto">Seja para resolver um gargalo específico ou para ter um parceiro contínuo de automação, temos o modelo de trabalho ideal para sua operação.</p>
         </div>
-        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4 border-t border-slate-700 bg-slate-900">
-             <a href="#engagement-models" class="block py-2 text-slate-300 hover:text-blue-500">Como Atuamos</a>
-             <a href="#use-cases" class="block py-2 text-slate-300 hover:text-blue-500">Soluções</a>
-             <a href="#about-us" class="block py-2 text-slate-300 hover:text-blue-500">Sobre Nós</a>
-             <a href="#faq" class="block py-2 text-slate-300 hover:text-blue-500">Dúvidas</a>
-             <a href="#contact" class="mt-4 block w-full text-center bg-brand-blue text-white font-semibold px-5 py-2.5 rounded-lg cta-button">Fale com um Especialista</a>
+        <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <div class="dark-card p-8 rounded-2xl flex flex-col">
+            <h3 class="text-2xl font-bold text-white mb-3">Projetos com Escopo Fechado</h3>
+            <p class="text-slate-400 mb-6 flex-grow">Tem um processo manual que precisa ser automatizado? Nós desenhamos, desenvolvemos e implementamos a solução completa, com prazo e custo definidos.</p>
+            <ul class="space-y-3 text-slate-300 mb-8">
+              <li class="flex items-center"><svg class="w-5 h-5 text-emerald-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Escopo e preço definidos</li>
+              <li class="flex items-center"><svg class="w-5 h-5 text-emerald-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Entrega com prazo determinado</li>
+              <li class="flex items-center"><svg class="w-5 h-5 text-emerald-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Perfeito para automações específicas</li>
+            </ul>
+            <a href="#contact" class="mt-auto w-full text-center bg-slate-700 text-white font-semibold py-3 rounded-lg hover:bg-slate-600 transition-colors">Solicite uma proposta</a>
+          </div>
+          <div class="dark-card dark-card-highlight p-8 rounded-2xl flex flex-col">
+            <h3 class="text-2xl font-bold text-white mb-3">Time Dedicado (Squad as a Service)</h3>
+            <p class="text-slate-400 mb-6 flex-grow">Alocamos um ou mais especialistas para atuar como parte do seu time, focados em identificar oportunidades e implementar um roadmap contínuo de automação.</p>
+            <ul class="space-y-3 text-slate-300 mb-8">
+              <li class="flex items-center"><svg class="w-5 h-5 text-emerald-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Parceria de longo prazo</li>
+              <li class="flex items-center"><svg class="w-5 h-5 text-emerald-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Flexibilidade para múltiplos projetos</li>
+              <li class="flex items-center"><svg class="w-5 h-5 text-emerald-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Ideal para escalar a operação</li>
+            </ul>
+            <a href="#contact" class="mt-auto w-full text-center bg-brand-blue text-white font-semibold py-3 rounded-lg cta-button">Converse sobre parceria</a>
+          </div>
         </div>
-    </header>
+      </div>
+    </section>
 
-    <main>
-        <!-- Hero Section -->
-        <section class="pt-32 pb-20 md:pt-48 md:pb-28 relative overflow-hidden">
-            <div class="hero-gradient absolute inset-0"></div>
-            <div class="container mx-auto px-6 text-center relative z-10 fade-in-section">
-                <h1 class="text-4xl md:text-6xl font-extrabold text-slate-50 leading-tight mb-4">
-                    Ampliamos sua equipe com <span class="brand-blue">especialistas em automação.</span>
-                </h1>
-                <p class="max-w-3xl mx-auto text-lg md:text-xl text-slate-300 mb-8">
-                    Conectamos suas ferramentas e otimizamos processos com automações robustas no WhatsApp, atuando como uma extensão do seu time. Reduza o trabalho manual e ganhe eficiência, seja em projetos pontuais ou em parcerias de longo prazo.
-                </p>
-                <a href="#contact" class="bg-brand-blue text-white font-bold px-8 py-4 rounded-lg text-lg cta-button inline-block">
-                    Agende uma conversa
-                </a>
-            </div>
-        </section>
-
-        <!-- Engagement Models Section -->
-        <section id="engagement-models" class="py-20 bg-slate-800/50">
-            <div class="container mx-auto px-6 fade-in-section">
-                <div class="text-center mb-16">
-                    <h2 class="text-3xl md:text-4xl font-bold text-white">Como podemos atuar na sua empresa</h2>
-                    <p class="text-lg text-slate-400 mt-2 max-w-2xl mx-auto">Seja para resolver um gargalo específico ou para ter um parceiro contínuo de automação, temos o modelo de trabalho ideal para sua operação.</p>
-                </div>
-                <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                    <div class="dark-card p-8 rounded-2xl flex flex-col">
-                        <h3 class="text-2xl font-bold text-white mb-3">Projetos com Escopo Fechado</h3>
-                        <p class="text-slate-400 mb-6 flex-grow">Tem um processo manual que precisa ser automatizado? Nós desenhamos, desenvolvemos e implementamos a solução completa, com prazo e custo definidos.</p>
-                        <ul class="space-y-3 text-slate-300 mb-8">
-                            <li class="flex items-center"><svg class="w-5 h-5 text-emerald-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Escopo e preço definidos</li>
-                            <li class="flex items-center"><svg class="w-5 h-5 text-emerald-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Entrega com prazo determinado</li>
-                            <li class="flex items-center"><svg class="w-5 h-5 text-emerald-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Perfeito para automações específicas</li>
-                        </ul>
-                        <a href="#contact" class="mt-auto w-full text-center bg-slate-700 text-white font-semibold py-3 rounded-lg hover:bg-slate-600 transition-colors">Solicite uma proposta</a>
-                    </div>
-                    <div class="dark-card dark-card-highlight p-8 rounded-2xl flex flex-col">
-                        <h3 class="text-2xl font-bold text-white mb-3">Time Dedicado (Squad as a Service)</h3>
-                        <p class="text-slate-400 mb-6 flex-grow">Alocamos um ou mais especialistas para atuar como parte do seu time, focados em identificar oportunidades e implementar um roadmap contínuo de automação.</p>
-                        <ul class="space-y-3 text-slate-300 mb-8">
-                            <li class="flex items-center"><svg class="w-5 h-5 text-emerald-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Parceria de longo prazo</li>
-                            <li class="flex items-center"><svg class="w-5 h-5 text-emerald-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Flexibilidade para múltiplos projetos</li>
-                            <li class="flex items-center"><svg class="w-5 h-5 text-emerald-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Ideal para escalar a operação</li>
-                        </ul>
-                         <a href="#contact" class="mt-auto w-full text-center bg-brand-blue text-white font-semibold py-3 rounded-lg cta-button">Converse sobre parceria</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Use Cases Section -->
-        <section id="use-cases" class="py-20">
-            <div class="container mx-auto px-6 fade-in-section">
-                <div class="text-center mb-16">
-                    <h2 class="text-3xl md:text-4xl font-bold text-white">O que podemos automatizar para você</h2>
-                    <p class="text-lg text-slate-400 mt-2 max-w-2xl mx-auto">Da qualificação de um lead à notificação de entrega, criamos fluxos de trabalho que conectam suas ferramentas e eliminam tarefas repetitivas.</p>
-                </div>
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="dark-card p-8 rounded-2xl">
-                        <h3 class="text-xl font-semibold text-white mb-2">Jornada de Leads e Vendas</h3>
-                        <p class="text-slate-400 mb-4">Capture, qualifique e distribua leads que chegam pelo WhatsApp diretamente para o seu CRM, notificando o time de vendas no Slack. Exemplo: WhatsApp → HubSpot → Slack.</p>
-                        <span class="text-sm font-semibold text-blue-400">Integrações Populares: HubSpot, Salesforce, Slack</span>
-                    </div>
-                    <div class="dark-card p-8 rounded-2xl">
-                        <h3 class="text-xl font-semibold text-white mb-2">Atendimento e Suporte ao Cliente</h3>
-                        <p class="text-slate-400 mb-4">Responda dúvidas frequentes 24/7, abra tickets no seu sistema de help desk e transborde para um atendente humano apenas quando for necessário.</p>
-                         <span class="text-sm font-semibold text-blue-400">Integrações Populares: Zendesk, Intercom, Gmail</span>
-                    </div>
-                    <div class="dark-card p-8 rounded-2xl">
-                        <h3 class="text-xl font-semibold text-white mb-2">Operações e Logística</h3>
-                        <p class="text-slate-400 mb-4">Envie atualizações automáticas sobre status de pedidos, colete informações para trocas e devoluções, e mantenha o cliente informado sem esforço manual.</p>
-                         <span class="text-sm font-semibold text-blue-400">Integrações Populares: Shopify, WooCommerce, Google Sheets</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- About Us Section -->
-        <section id="about-us" class="py-20 bg-slate-800/50">
-            <div class="container mx-auto px-6 fade-in-section">
-                <div class="text-center mb-16 max-w-3xl mx-auto">
-                    <h2 class="text-3xl md:text-4xl font-bold text-white">Conheça os especialistas por trás da Entrope</h2>
-                    <p class="text-lg text-slate-400 mt-4">Somos engenheiros e especialistas em processos que se cansaram de ver empresas perdendo tempo e dinheiro com tarefas manuais. A Entrope nasceu da nossa obsessão por otimizar operações e da convicção de que a automação não precisa ser complexa ou inacessível.</p>
-                </div>
-                <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-4xl mx-auto text-center">
-                    <!-- Founder 1 -->
-                    <div class="flex flex-col items-center">
-                        <img src="5.png" alt="Foto do Sócio 1" class="w-32 h-32 rounded-full mb-4 object-cover">
-                        <h3 class="text-xl font-bold text-white">Marzio Aguiar</h3>
-                        <p class="text-blue-400">Especialista em Automação</p>
-                    </div>
-                    <!-- Founder 2 -->
-                    <div class="flex flex-col items-center">
-                        <img src="4.png" alt="Foto do Sócio 2" class="w-32 h-32 rounded-full mb-4 object-cover">
-                        <h3 class="text-xl font-bold text-white">Gabriel Facenda</h3>
-                        <p class="text-blue-400">Especialista em Marketing e Produto</p>
-                    </div>
-                    <!-- Founder 3 -->
-                    <div class="flex flex-col items-center">
-                        <img src="3.png" alt="Foto do Sócio 3" class="w-32 h-32 rounded-full mb-4 object-cover">
-                        <h3 class="text-xl font-bold text-white">Giovanni Palotta</h3>
-                        <p class="text-blue-400">Especialista em Tecnologia</p>
-                    </div>
-                </div>
-                 <p class="text-center text-lg text-slate-400 mt-16 max-w-3xl mx-auto">Nossa missão é simples: atuar como o time de tecnologia que você não sabia que precisava, traduzindo seus desafios de negócio em automações robustas que simplesmente funcionam, permitindo que sua equipe foque no que realmente importa.</p>
-            </div>
-        </section>
-
-        <!-- Testimonials Section -->
-        <section id="testimonials" class="py-20">
-            <div class="container mx-auto px-6 fade-in-section">
-                <div class="text-center mb-16">
-                    <h2 class="text-3xl md:text-4xl font-bold text-white">A experiência de quem já trabalha conosco</h2>
-                </div>
-                <div class="grid md:grid-cols-2 gap-8">
-                    <div class="dark-card p-8 rounded-2xl">
-                        <p class="text-slate-300 text-lg mb-6">"Ter a Entrope como nosso time dedicado de automação foi um divisor de águas. Ganhamos uma capacidade de inovação que seria impossível de construir internamente no mesmo ritmo. Eles são parte da nossa equipe."</p>
-                        <div class="flex items-center">
-                            <img src="https://placehold.co/48x48/1e293b/94a3b8?text=JS" alt="John Smith" class="w-12 h-12 rounded-full mr-4">
-                            <div>
-                                <p class="font-semibold text-white">João Silva</p>
-                                <p class="text-slate-400">Diretor de Vendas, InnovateCorp</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="dark-card p-8 rounded-2xl">
-                        <p class="text-slate-300 text-lg mb-6">"O processo para automatizar nossa integração de parceiros era complexo e demorado. A Entrope desenhou e entregou a solução em poucas semanas. O ROI foi claro desde o primeiro mês."</p>
-                        <div class="flex items-center">
-                            <img src="https://placehold.co/48x48/1e293b/94a3b8?text=AD" alt="Alisha D." class="w-12 h-12 rounded-full mr-4">
-                            <div>
-                                <p class="font-semibold text-white">Ana D'Souza</p>
-                                <p class="text-slate-400">Gerente de Operações, QuantumLeap</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- AI Idea Generator Section -->
-        <section id="ai-generator" class="py-20 bg-slate-800/50">
-            <div class="container mx-auto px-6 fade-in-section">
-                <div class="dark-card rounded-2xl p-8 md:p-16 text-center">
-                    <h2 class="text-3xl md:text-4xl font-bold text-white">Não sabe por onde começar? Vamos desenhar um rascunho.</h2>
-                    <p class="text-lg text-slate-400 mt-3 mb-8 max-w-2xl mx-auto">Descreva um processo manual da sua empresa. Nossa ferramenta de IA vai gerar uma estrutura básica de automação para dar o pontapé inicial na nossa conversa.</p>
-                    
-                    <form id="idea-generator-form" class="max-w-xl mx-auto">
-                        <div class="flex flex-col sm:flex-row gap-4">
-                            <input id="business-description" type="text" placeholder="ex: 'qualificar novos leads do meu site'" class="w-full p-4 rounded-lg dark-input focus:outline-none focus:ring-2" required>
-                            <button type="submit" class="bg-brand-blue text-white font-bold px-6 py-4 rounded-lg cta-button flex-shrink-0">✨ Gerar estrutura básica</button>
-                        </div>
-                    </form>
-
-                    <div id="loader" class="hidden mx-auto mt-8"></div>
-                    <div id="error-message" class="hidden mt-6 text-lg text-red-400 font-semibold"></div>
-                    
-                    <div id="idea-results-container" class="hidden mt-12 text-center">
-                        <pre id="json-result" class="json-preview"></pre>
-                        <div class="bg-blue-900/40 border-l-4 border-blue-500 text-blue-200 p-6 rounded-r-lg mt-8 max-w-3xl mx-auto text-left">
-                            <h3 class="font-bold text-xl text-white mb-2">Este é o ponto de partida.</h3>
-                            <p class="text-lg">Um fluxo de trabalho real vai muito além. Ele inclui tratamento de erros, lógicas condicionais e integrações profundas com seus sistemas. Vamos conversar para desenhar a solução completa?</p>
-                        </div>
-                         <a href="#contact" class="bg-emerald-500 text-white font-bold px-8 py-4 rounded-lg text-lg cta-button inline-block mt-8">Agendar um bate-papo técnico &rarr;</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- FAQ Section -->
-        <section id="faq" class="py-20">
-            <div class="container mx-auto px-6 fade-in-section">
-                <div class="text-center mb-16">
-                    <h2 class="text-3xl md:text-4xl font-bold text-white">Dúvidas comuns sobre nosso trabalho</h2>
-                </div>
-                <div class="max-w-3xl mx-auto space-y-4">
-                    <details class="dark-card p-6 rounded-xl cursor-pointer transition-colors">
-                        <summary class="font-semibold text-lg text-white list-none flex justify-between items-center">
-                            Quando devo escolher um Projeto Pontual vs. um Time Dedicado?
-                            <svg class="w-5 h-5 text-slate-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
-                        </summary>
-                        <p class="text-slate-400 mt-4">O **Projeto Pontual** é perfeito para resolver um problema específico com escopo fechado. O **Time Dedicado** funciona como um 'squad as a service', ideal para empresas que têm um roadmap de automação e precisam de um parceiro contínuo para evoluir seus processos.</p>
-                    </details>
-                    <details class="dark-card p-6 rounded-xl cursor-pointer transition-colors">
-                        <summary class="font-semibold text-lg text-white list-none flex justify-between items-center">
-                            Por que vocês usam n8n?
-                             <svg class="w-5 h-5 text-slate-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
-                        </summary>
-                        <p class="text-slate-400 mt-4">n8n é uma plataforma de automação de código aberto que nos dá flexibilidade total para construir fluxos de trabalho complexos, conectar com qualquer API e garantir que a solução seja escalável e segura, rodando na sua própria infraestrutura se necessário.</p>
-                    </details>
-                    <details class="dark-card p-6 rounded-xl cursor-pointer transition-colors">
-                        <summary class="font-semibold text-lg text-white list-none flex justify-between items-center">
-                            Como os projetos são precificados?
-                             <svg class="w-5 h-5 text-slate-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
-                        </summary>
-                        <p class="text-slate-400 mt-4">Para **Projetos Pontuais**, o preço é fixo, baseado no escopo. Para o **Time Dedicado**, o valor é um 'retainer' mensal, de acordo com a alocação de horas. Todas as propostas são detalhadas e sem surpresas.</p>
-                    </details>
-                </div>
-            </div>
-        </section>
-
-        <!-- CTA / Detailed Contact Section -->
-        <section id="contact" class="py-20 bg-slate-800/50">
-            <div class="container mx-auto px-6 fade-in-section">
-                <div class="text-center mb-8">
-                    <h2 class="text-3xl md:text-4xl font-extrabold text-white">Vamos desenhar a automação ideal para sua operação?</h2>
-                    <p class="text-slate-300 mt-2 max-w-3xl mx-auto">
-                        Preencha o formulário com o máximo de detalhes possível. Um especialista analisará seu cenário e retornará para agendar uma conversa técnica.
-                    </p>
-                </div>
-
-                <div class="card-glass p-6 md:p-10 relative max-w-3xl mx-auto">
-                    <div class="card-glow"></div>
-
-                    <form id="contact-form" class="stagger">
-                        <div class="grid md:grid-cols-2 gap-4 fade-up" style="--d:0">
-                            <label class="field flex items-center gap-3 px-3 py-3">
-                                <svg class="icon-left w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" /></svg>
-                                <input id="name" type="text" placeholder="Seu Nome" required>
-                            </label>
-                            <label class="field flex items-center gap-3 px-3 py-3">
-                                <svg class="icon-left w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" /></svg>
-                                <input id="email" type="email" placeholder="E-mail de Trabalho" required>
-                            </label>
-                        </div>
-                        <div class="fade-up" style="--d:1">
-                            <label class="field flex items-center gap-3 px-3 py-3 w-full mt-4">
-                                <svg class="icon-left w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.286zm0 13.036h.008v.008h-.008v-.008z" /></svg>
-                                <select id="interest-type" class="pr-8" required>
-                                    <option value="">Selecione o modelo de interesse...</option>
-                                    <option value="dedicated-team">Equipe Dedicada (Parceria Contínua)</option>
-                                    <option value="specific-project">Projeto Pontual</option>
-                                    <option value="not-sure">Ainda não tenho certeza</option>
-                                </select>
-                            </label>
-                        </div>
-                        <div class="fade-up" style="--d:2">
-                            <label class="field flex gap-3 px-3 py-3 w-full mt-4 items-start">
-                                 <svg class="icon-left w-5 h-5 mt-1 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" /></svg>
-                                <textarea id="description" rows="5" class="resize-y" placeholder="Nos conte o que precisa automatizar. Quanto mais contexto, melhor." required></textarea>
-                            </label>
-                        </div>
-                        <div class="fade-up" style="--d:3">
-                            <button type="submit" class="btn-primary w-full mt-6">Enviar para análise</button>
-                        </div>
-                    </form>
-                    <div id="form-success-message" class="hidden mt-6 text-center text-emerald-400 font-semibold">
-                        Recebemos suas informações. Em breve, um de nossos especialistas entrará em contato. Obrigado!
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer class="bg-slate-900 border-t border-slate-700 text-slate-400 py-12">
-        <div class="container mx-auto px-6 text-center">
-             <a href="#" class="flex items-center justify-center mb-4">
-                 <img src="logo-empresa (1).png" alt="Logo Entrope" class="h-9 w-auto"/>
-             </a>
-            <p class="text-sm mt-1 mb-4">Automação como serviço para escalar sua operação.</p>
-            <p class="text-xs text-slate-500">Especialistas em n8n e automação de processos.</p>
-            <p class="text-xs text-slate-500 mt-2">&copy; 2025 Entrope. Todos os direitos reservados.</p>
+    <!-- Use Cases -->
+    <section id="use-cases" class="py-20">
+      <div class="container mx-auto px-6 fade-in-section">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold text-white">O que podemos automatizar para você</h2>
+          <p class="text-lg text-slate-400 mt-2 max-w-2xl mx-auto">Da qualificação de um lead à notificação de entrega, criamos fluxos de trabalho que conectam suas ferramentas e eliminam tarefas repetitivas.</p>
         </div>
-    </footer>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div class="dark-card p-8 rounded-2xl">
+            <h3 class="text-xl font-semibold text-white mb-2">Jornada de Leads e Vendas</h3>
+            <p class="text-slate-400 mb-4">Capture, qualifique e distribua leads que chegam pelo WhatsApp diretamente para o seu CRM, notificando o time de vendas no Slack. Exemplo: WhatsApp → HubSpot → Slack.</p>
+            <span class="text-sm font-semibold text-blue-400">Integrações Populares: HubSpot, Salesforce, Slack</span>
+          </div>
+          <div class="dark-card p-8 rounded-2xl">
+            <h3 class="text-xl font-semibold text-white mb-2">Atendimento e Suporte ao Cliente</h3>
+            <p class="text-slate-400 mb-4">Responda dúvidas frequentes 24/7, abra tickets no seu sistema de help desk e transborde para um atendente humano apenas quando for necessário.</p>
+            <span class="text-sm font-semibold text-blue-400">Integrações Populares: Zendesk, Intercom, Gmail</span>
+          </div>
+          <div class="dark-card p-8 rounded-2xl">
+            <h3 class="text-xl font-semibold text-white mb-2">Operações e Logística</h3>
+            <p class="text-slate-400 mb-4">Envie atualizações automáticas sobre status de pedidos, colete informações para trocas e devoluções, e mantenha o cliente informado sem esforço manual.</p>
+            <span class="text-sm font-semibold text-blue-400">Integrações Populares: Shopify, WooCommerce, Google Sheets</span>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <script>
-        // --- Standard Website Interactivity ---
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-        mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
+    <!-- About Us -->
+    <section id="about-us" class="py-20 bg-slate-800/50">
+      <div class="container mx-auto px-6 fade-in-section">
+        <div class="text-center mb-16 max-w-3xl mx-auto">
+          <h2 class="text-3xl md:text-4xl font-bold text-white">Conheça os especialistas por trás da Entrope</h2>
+          <p class="text-lg text-slate-400 mt-4">Somos engenheiros e especialistas em processos que se cansaram de ver empresas perdendo tempo e dinheiro com tarefas manuais. A Entrope nasceu da nossa obsessão por otimizar operações e da convicção de que a automação não precisa ser complexa ou inacessível.</p>
+        </div>
+        <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-4xl mx-auto text-center">
+          <div class="flex flex-col items-center">
+            <img src="5.png" alt="Marzio Aguiar — Especialista em Automação" width="128" height="128" class="w-32 h-32 rounded-full mb-4 object-cover" loading="lazy" decoding="async">
+            <h3 class="text-xl font-bold text-white">Marzio Aguiar</h3>
+            <p class="text-blue-400">Especialista em Automação</p>
+          </div>
+          <div class="flex flex-col items-center">
+            <img src="4.png" alt="Gabriel Facenda — Especialista em Marketing e Produto" width="128" height="128" class="w-32 h-32 rounded-full mb-4 object-cover" loading="lazy" decoding="async">
+            <h3 class="text-xl font-bold text-white">Gabriel Facenda</h3>
+            <p class="text-blue-400">Especialista em Marketing e Produto</p>
+          </div>
+          <div class="flex flex-col items-center">
+            <img src="3.png" alt="Giovanni Palotta — Especialista em Tecnologia" width="128" height="128" class="w-32 h-32 rounded-full mb-4 object-cover" loading="lazy" decoding="async">
+            <h3 class="text-xl font-bold text-white">Giovanni Palotta</h3>
+            <p class="text-blue-400">Especialista em Tecnologia</p>
+          </div>
+        </div>
+        <p class="text-center text-lg text-slate-400 mt-16 max-w-3xl mx-auto">Nossa missão é simples: atuar como o time de tecnologia que você não sabia que precisava, traduzindo seus desafios de negócio em automações robustas que simplesmente funcionam, permitindo que sua equipe foque no que realmente importa.</p>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="py-20">
+      <div class="container mx-auto px-6 fade-in-section">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold text-white">A experiência de quem já trabalha conosco</h2>
+        </div>
+        <div class="grid md:grid-cols-2 gap-8">
+          <div class="dark-card p-8 rounded-2xl">
+            <p class="text-slate-300 text-lg mb-6">"Ter a Entrope como nosso time dedicado de automação foi um divisor de águas. Ganhamos uma capacidade de inovação que seria impossível de construir internamente no mesmo ritmo. Eles são parte da nossa equipe."</p>
+            <div class="flex items-center">
+              <img src="https://placehold.co/48x48/1e293b/94a3b8?text=JS" alt="Foto do cliente João Silva" width="48" height="48" class="w-12 h-12 rounded-full mr-4" loading="lazy" decoding="async">
+              <div>
+                <p class="font-semibold text-white">João Silva</p>
+                <p class="text-slate-400">Diretor de Vendas, InnovateCorp</p>
+              </div>
+            </div>
+          </div>
+          <div class="dark-card p-8 rounded-2xl">
+            <p class="text-slate-300 text-lg mb-6">"O processo para automatizar nossa integração de parceiros era complexo e demorado. A Entrope desenhou e entregou a solução em poucas semanas. O ROI foi claro desde o primeiro mês."</p>
+            <div class="flex items-center">
+              <img src="https://placehold.co/48x48/1e293b/94a3b8?text=AD" alt="Foto da cliente Ana D'Souza" width="48" height="48" class="w-12 h-12 rounded-full mr-4" loading="lazy" decoding="async">
+              <div>
+                <p class="font-semibold text-white">Ana D'Souza</p>
+                <p class="text-slate-400">Gerente de Operações, QuantumLeap</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- AI Idea Generator -->
+    <section id="ai-generator" class="py-20 bg-slate-800/50">
+      <div class="container mx-auto px-6 fade-in-section">
+        <div class="dark-card rounded-2xl p-8 md:p-16 text-center">
+          <h2 class="text-3xl md:text-4xl font-bold text-white">Não sabe por onde começar? Vamos desenhar um rascunho.</h2>
+          <p class="text-lg text-slate-400 mt-3 mb-8 max-w-2xl mx-auto">Descreva um processo manual da sua empresa. Nossa ferramenta de IA vai gerar uma estrutura básica de automação para dar o pontapé inicial na nossa conversa.</p>
+
+          <form id="idea-generator-form" class="max-w-xl mx-auto">
+            <div class="flex flex-col sm:flex-row gap-4">
+              <input id="business-description" type="text" placeholder="ex: 'qualificar novos leads do meu site'" class="w-full p-4 rounded-lg dark-input focus:outline-none focus:ring-2" required autocomplete="off">
+              <button type="submit" class="bg-brand-blue text-white font-bold px-6 py-4 rounded-lg cta-button flex-shrink-0">✨ Gerar estrutura básica</button>
+            </div>
+          </form>
+
+          <div id="loader" class="hidden mx-auto mt-8 loader" aria-label="Carregando"></div>
+          <div id="error-message" class="hidden mt-6 text-lg text-red-400 font-semibold"></div>
+
+          <div id="idea-results-container" class="hidden mt-12 text-center">
+            <pre id="json-result" class="json-preview"></pre>
+            <div class="bg-blue-900/40 border-l-4 border-blue-500 text-blue-200 p-6 rounded-r-lg mt-8 max-w-3xl mx-auto text-left">
+              <h3 class="font-bold text-xl text-white mb-2">Este é o ponto de partida.</h3>
+              <p class="text-lg">Um fluxo de trabalho real vai muito além. Ele inclui tratamento de erros, lógicas condicionais e integrações profundas com seus sistemas. Vamos conversar para desenhar a solução completa?</p>
+            </div>
+            <a href="#contact" class="bg-emerald-500 text-white font-bold px-8 py-4 rounded-lg text-lg cta-button inline-block mt-8">Agendar um bate-papo técnico &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ (sem citar n8n) -->
+    <section id="faq" class="py-20">
+      <div class="container mx-auto px-6 fade-in-section">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold text-white">Dúvidas comuns sobre nosso trabalho</h2>
+        </div>
+        <div class="max-w-3xl mx-auto space-y-4">
+          <details class="dark-card p-6 rounded-xl cursor-pointer transition-colors">
+            <summary class="font-semibold text-lg text-white list-none flex justify-between items-center">
+              Como começamos um projeto com vocês?
+              <svg class="w-5 h-5 text-slate-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+            </summary>
+            <p class="text-slate-400 mt-4">Iniciamos com uma conversa técnica para entender contexto, metas e restrições. Em seguida, fazemos um diagnóstico rápido, definimos o escopo e escolhemos o modelo (projeto pontual ou time dedicado). Você recebe um plano com entregáveis, prazos e investimento.</p>
+          </details>
+
+          <details class="dark-card p-6 rounded-xl cursor-pointer transition-colors">
+            <summary class="font-semibold text-lg text-white list-none flex justify-between items-center">
+              Quanto tempo leva para ver resultados?
+              <svg class="w-5 h-5 text-slate-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+            </summary>
+            <p class="text-slate-400 mt-4">Projetos pontuais simples costumam entregar valor em 2–4 semanas. Em times dedicados, adotamos ciclos quinzenais com entregas contínuas e priorização dinâmica do backlog.</p>
+          </details>
+
+          <details class="dark-card p-6 rounded-xl cursor-pointer transition-colors">
+            <summary class="font-semibold text-lg text-white list-none flex justify-between items-center">
+              Como vocês garantem segurança e privacidade dos dados?
+              <svg class="w-5 h-5 text-slate-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+            </summary>
+            <p class="text-slate-400 mt-4">Aplicamos o princípio do menor privilégio, segregação de ambientes, logs de auditoria e criptografia em trânsito. Alinhamos políticas com LGPD e boas práticas de segurança da sua empresa.</p>
+          </details>
+
+          <details class="dark-card p-6 rounded-xl cursor-pointer transition-colors">
+            <summary class="font-semibold text-lg text-white list-none flex justify-between items-center">
+              Vocês trabalham na nossa infraestrutura ou hospedam para nós?
+              <svg class="w-5 h-5 text-slate-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+            </summary>
+            <p class="text-slate-400 mt-4">Nos adaptamos: podemos atuar na sua cloud (preferencial) ou em ambiente gerenciado, sempre com observabilidade, versionamento e rotinas de backup.</p>
+          </details>
+
+          <details class="dark-card p-6 rounded-xl cursor-pointer transition-colors">
+            <summary class="font-semibold text-lg text-white list-none flex justify-between items-center">
+              Quais integrações vocês costumam fazer?
+              <svg class="w-5 h-5 text-slate-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+            </summary>
+            <p class="text-slate-400 mt-4">CRMs (HubSpot, Salesforce), suporte (Zendesk, Intercom), colaboração (Slack), e-commerce (Shopify, WooCommerce), Google Workspace e APIs proprietárias. Se tem API, integramos.</p>
+          </details>
+
+          <details class="dark-card p-6 rounded-xl cursor-pointer transition-colors">
+            <summary class="font-semibold text-lg text-white list-none flex justify-between items-center">
+              Como medem sucesso e ROI?
+              <svg class="w-5 h-5 text-slate-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+            </summary>
+            <p class="text-slate-400 mt-4">Definimos KPIs antes de começar (tempo economizado, SLA de atendimento, taxa de conversão, erros evitados). Acompanhamos dashboards e relatórios de impacto por entrega.</p>
+          </details>
+
+          <details class="dark-card p-6 rounded-xl cursor-pointer transition-colors">
+            <summary class="font-semibold text-lg text-white list-none flex justify-between items-center">
+              O que acontece após a implantação?
+              <svg class="w-5 h-5 text-slate-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+            </summary>
+            <p class="text-slate-400 mt-4">Oferecemos suporte, documentação e transferência de conhecimento. Em parceria contínua, operamos melhorias, monitoramos e ajustamos os fluxos conforme seus objetivos evoluem.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="py-20 bg-slate-800/50">
+      <div class="container mx-auto px-6 fade-in-section">
+        <div class="text-center mb-8">
+          <h2 class="text-3xl md:text-4xl font-extrabold text-white">Vamos desenhar a automação ideal para sua operação?</h2>
+          <p class="text-slate-300 mt-2 max-w-3xl mx-auto">
+            Preencha o formulário com o máximo de detalhes possível. Um especialista analisará seu cenário e retornará para agendar uma conversa técnica.
+          </p>
+        </div>
+
+        <div class="card-glass p-6 md:p-10 relative max-w-3xl mx-auto">
+          <div class="card-glow"></div>
+
+          <form id="contact-form" class="stagger" novalidate>
+            <div class="grid md:grid-cols-2 gap-4 fade-up" style="--d:0">
+              <label class="field flex items-center gap-3 px-3 py-3">
+                <svg class="icon-left w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/></svg>
+                <input id="name" name="name" type="text" placeholder="Seu Nome" autocomplete="name" minlength="2" required>
+              </label>
+              <label class="field flex items-center gap-3 px-3 py-3">
+                <svg class="icon-left w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
+                <input id="email" name="email" type="email" placeholder="E-mail de Trabalho" autocomplete="email" inputmode="email" required>
+              </label>
+            </div>
+            <div class="fade-up" style="--d:1">
+              <label class="field flex items-center gap-3 px-3 py-3 w-full mt-4">
+                <svg class="icon-left w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.286zm0 13.036h.008v.008h-.008v-.008z"/></svg>
+                <select id="interest-type" name="interestType" class="pr-8" required aria-describedby="interest-help">
+                  <option value="">Selecione o modelo de interesse...</option>
+                  <option value="dedicated-team">Equipe Dedicada (Parceria Contínua)</option>
+                  <option value="specific-project">Projeto Pontual</option>
+                  <option value="not-sure">Ainda não tenho certeza</option>
+                </select>
+              </label>
+              <small id="interest-help" class="sr-only">Selecione o modelo de interesse</small>
+            </div>
+            <div class="fade-up" style="--d:2">
+              <label class="field flex gap-3 px-3 py-3 w-full mt-4 items-start">
+                <svg class="icon-left w-5 h-5 mt-1 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"/></svg>
+                <textarea id="description" name="description" rows="5" class="resize-y" placeholder="Nos conte o que precisa automatizar. Quanto mais contexto, melhor." minlength="10" required></textarea>
+              </label>
+            </div>
+
+            <!-- Honeypot anti-spam -->
+            <input type="text" name="website" class="hidden" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+            <div class="fade-up" style="--d:3">
+              <button type="submit" class="btn-primary w-full mt-6" id="submitBtn">Enviar para análise</button>
+            </div>
+          </form>
+
+          <div id="form-success-message" class="hidden mt-6 text-center text-emerald-400 font-semibold" role="status" aria-live="polite">
+            Recebemos suas informações. Em breve, um de nossos especialistas entrará em contato. Obrigado!
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-slate-900 border-t border-slate-700 text-slate-400 py-12">
+    <div class="container mx-auto px-6 text-center">
+      <a href="#" class="flex items-center justify-center mb-4" aria-label="Página inicial Entrope">
+        <img src="logo-empresa (1).png" alt="Logo Entrope" width="150" height="40" class="h-9 w-auto" loading="lazy" decoding="async">
+      </a>
+      <p class="text-sm mt-1 mb-4">Automação como serviço para escalar sua operação.</p>
+      <p class="text-xs text-slate-500">Especialistas em automação de processos.</p>
+      <p class="text-xs text-slate-500 mt-2">&copy; 2025 Entrope. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <!-- Botão voltar ao topo -->
+  <button id="toTop" class="fixed bottom-6 right-6 hidden md:flex items-center justify-center w-10 h-10 rounded-full bg-brand-blue text-white shadow-lg" aria-label="Voltar ao topo">↑</button>
+
+  <script>
+    // --- Header shrink on scroll + toTop button ---
+    const hdr = document.querySelector('.header');
+    const toTop = document.getElementById('toTop');
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          hdr.classList.toggle('shrink', window.scrollY > 80);
+          toTop.classList.toggle('hidden', window.scrollY < 600);
+          ticking = false;
+        });
+        ticking = true;
+      }
+    });
+    toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    // --- Mobile menu ---
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileMenuButton.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // --- Smooth scroll e fechar menu mobile ---
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        if (!mobileMenu.classList.contains('hidden')) mobileMenu.classList.add('hidden');
+        const targetElement = document.querySelector(this.getAttribute('href'));
+        if (targetElement) targetElement.scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+
+    // --- Fade-in Intersection Observer ---
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => { if (entry.isIntersecting) entry.target.classList.add('is-visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in-section').forEach((section) => observer.observe(section));
+
+    // --- Contact form: UX (fake handler) ---
+    const contactForm = document.getElementById('contact-form');
+    const successMessage = document.getElementById('form-success-message');
+    const submitBtn = document.getElementById('submitBtn');
+
+    contactForm?.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      // bloqueio spam via honeypot
+      const hp = contactForm.querySelector('input[name="website"]');
+      if (hp && hp.value.trim() !== "") return; // bot detectado
+
+      // validação básica
+      if (!contactForm.checkValidity()) { contactForm.reportValidity(); return; }
+
+      submitBtn.disabled = true;
+      const original = submitBtn.textContent;
+      submitBtn.textContent = 'Enviando...';
+
+      // simulação de envio — troque aqui pelo seu handler real (ex: EmailJS/fetch)
+      setTimeout(() => {
+        submitBtn.disabled = false;
+        submitBtn.textContent = original;
+        contactForm.reset();
+        successMessage.classList.remove('hidden');
+        setTimeout(() => successMessage.classList.add('hidden'), 4500);
+      }, 1000);
+    });
+
+    // --- FAQ arrows (CSS já cuida da rotação) ---
+
+    // --- Gemini API Idea Generator ---
+    const ideaForm = document.getElementById('idea-generator-form');
+    const businessDescriptionInput = document.getElementById('business-description');
+    const loader = document.getElementById('loader');
+    const resultsContainer = document.getElementById('idea-results-container');
+    const jsonResultEl = document.getElementById('json-result');
+    const errorMessage = document.getElementById('error-message');
+
+    ideaForm.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const description = businessDescriptionInput.value;
+      if (!description.trim()) return;
+
+      resultsContainer.classList.add('hidden');
+      errorMessage.classList.add('hidden');
+      loader.classList.remove('hidden');
+      loader.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+      try {
+        const prompt = `Based on the user's request to automate "${description}", generate a simple, conceptual n8n workflow in JSON format. The JSON should have a "trigger" and an array of "steps". Each step should have a "node" (e.g., "WhatsApp", "AI Model", "Google Sheets") and an "action" (a simple description of what it does). Keep it to 3-5 steps. This is a basic preview to spark interest.`;
+
+        let chatHistory = [{ role: "user", parts: [{ text: prompt }] }];
+        const payload = { contents: chatHistory, generationConfig: { responseMimeType: "application/json" } };
+
+        const apiKey = ""; // ambiente
+        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+
+        const response = await fetch(apiUrl, {
+          method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload)
         });
 
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                if (!mobileMenu.classList.contains('hidden')) {
-                    mobileMenu.classList.add('hidden');
-                }
-                const targetElement = document.querySelector(this.getAttribute('href'));
-                if(targetElement) {
-                    targetElement.scrollIntoView({ behavior: 'smooth' });
-                }
-            });
-        });
+        if (!response.ok) throw new Error(`API request failed with status ${response.status}`);
 
-        const contactForm = document.getElementById('contact-form');
-        const successMessage = document.getElementById('form-success-message');
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            contactForm.style.display = 'none';
-            successMessage.classList.remove('hidden');
-        });
-        
-        // --- FAQ Accordion ---
-        document.querySelectorAll('details').forEach((detail) => {
-            detail.addEventListener('toggle', (event) => {
-                // No need for JS to rotate arrow, handled by CSS details[open]
-            });
-        });
-
-        // --- Fade-in Animation on Scroll ---
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('is-visible');
-                }
-            });
-        }, {
-            threshold: 0.1 // Trigger when 10% of the element is visible
-        });
-
-        const sectionsToFade = document.querySelectorAll('.fade-in-section');
-        sectionsToFade.forEach((section) => {
-            observer.observe(section);
-        });
-
-        // --- Gemini API Idea Generator ---
-        const ideaForm = document.getElementById('idea-generator-form');
-        const businessDescriptionInput = document.getElementById('business-description');
-        const loader = document.getElementById('loader');
-        const resultsContainer = document.getElementById('idea-results-container');
-        const jsonResultEl = document.getElementById('json-result');
-        const errorMessage = document.getElementById('error-message');
-
-        ideaForm.addEventListener('submit', async function(e) {
-            e.preventDefault();
-            const description = businessDescriptionInput.value;
-            if (!description.trim()) return;
-
-            resultsContainer.classList.add('hidden');
-            errorMessage.classList.add('hidden');
-            loader.classList.remove('hidden');
-            loader.scrollIntoView({ behavior: 'smooth', block: 'center' });
-
-            try {
-                const prompt = `Based on the user's request to automate "${description}", generate a simple, conceptual n8n workflow in JSON format. The JSON should have a "trigger" and an array of "steps". Each step should have a "node" (e.g., "WhatsApp", "AI Model", "Google Sheets") and an "action" (a simple description of what it does). Keep it to 3-5 steps. This is a basic preview to spark interest.`;
-                
-                let chatHistory = [{ role: "user", parts: [{ text: prompt }] }];
-                const payload = {
-                    contents: chatHistory,
-                    generationConfig: { responseMimeType: "application/json" }
-                };
-
-                const apiKey = ""; // Handled by environment
-                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
-
-                const response = await fetch(apiUrl, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
-
-                if (!response.ok) {
-                    throw new Error(`API request failed with status ${response.status}`);
-                }
-                
-                const result = await response.json();
-                
-                if (result.candidates && result.candidates[0]?.content?.parts?.[0]) {
-                    const jsonText = result.candidates[0].content.parts[0].text;
-                    displayJsonPreview(jsonText);
-                } else {
-                    throw new Error("The AI returned an unexpected response format.");
-                }
-
-            } catch (error) {
-                console.error("Error generating ideas:", error);
-                errorMessage.textContent = `Desculpe, não conseguimos gerar uma prévia no momento. Por favor, tente uma descrição diferente ou entre em contato conosco diretamente.`;
-                errorMessage.classList.remove('hidden');
-            } finally {
-                loader.classList.add('hidden');
-            }
-        });
-
-        function displayJsonPreview(jsonString) {
-            try {
-                const parsedJson = JSON.parse(jsonString);
-                jsonResultEl.textContent = JSON.stringify(parsedJson, null, 2);
-                resultsContainer.classList.remove('hidden');
-                resultsContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-            } catch (e) {
-                jsonResultEl.textContent = jsonString;
-                console.error("Failed to parse JSON from AI, displaying raw text.", e);
-                resultsContainer.classList.remove('hidden');
-                resultsContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-            }
+        const result = await response.json();
+        if (result.candidates && result.candidates[0]?.content?.parts?.[0]) {
+          const jsonText = result.candidates[0].content.parts[0].text;
+          displayJsonPreview(jsonText);
+        } else {
+          throw new Error("The AI returned an unexpected response format.");
         }
-    </script>
+
+      } catch (error) {
+        console.error("Error generating ideas:", error);
+        errorMessage.textContent = `Desculpe, não conseguimos gerar uma prévia no momento. Por favor, tente uma descrição diferente ou entre em contato conosco diretamente.`;
+        errorMessage.classList.remove('hidden');
+      } finally {
+        loader.classList.add('hidden');
+      }
+    });
+
+    function displayJsonPreview(jsonString) {
+      try {
+        const parsedJson = JSON.parse(jsonString);
+        jsonResultEl.textContent = JSON.stringify(parsedJson, null, 2);
+        resultsContainer.classList.remove('hidden');
+        resultsContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      } catch (e) {
+        jsonResultEl.textContent = jsonString;
+        console.error("Failed to parse JSON from AI, displaying raw text.", e);
+        resultsContainer.classList.remove('hidden');
+        resultsContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+    }
+  </script>
 </body>
 </html>
